@@ -19,8 +19,16 @@ class AlertDialog(context: Context) : Dialog(context) {
         binding.alertTitleMessage.text = context.getString(titleRes)
     }
 
+    fun setDialogTitle(title: String) {
+        binding.alertTitleMessage.text = title
+    }
+
     fun setDialogMessage(messageRes: Int) {
         binding.alertMessage.text = context.getString(messageRes)
+    }
+
+    fun setDialogMessage(message: String) {
+        binding.alertMessage.text = message
     }
 
     fun setNegativeButtonText(textRes: Int) {
