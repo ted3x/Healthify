@@ -1,2 +1,3 @@
+include ':Components'
 include ':app'
 rootProject.name = "Healthify"
