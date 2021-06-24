@@ -6,7 +6,22 @@
     <string name="splash_network_is_not_available_message">Unfortunately, you don\'t have network
         connection, try later.
     </string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_mail">E-Mail</string>
+    <string name="sign_in_mail_hint">mail@gmail.com</string>
+    <string name="sign_in_password">Password</string>
+    <string name="sign_in_password_hint">******</string>
+    <string name="sign_in_recover_password">Recover password</string>
+    <string name="sign_in_result_not_found">There was error while getting user data. Try later!</string>
+    <string name="sign_in_incorrect_credentials">Incorrect credentials!</string>
+    <string name="sign_in_user_not_found">User not found!</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_confirm_password">Confirm password</string>
+    <string name="sign_up_error_while_signing_up">There was error while in sign up process. Try later!</string>
+    <string name="onboarding">Onboarding</string>
     <string name="component_yes">Yes</string>
     <string name="component_no">No</string>
     <string name="component_close">Close</string>
+    <string name="components_error">Error</string>
+    <string name="components_fill_all_the_fields">To continue, please fill all the fields!</string>
 </resources>
