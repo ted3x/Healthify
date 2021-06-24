@@ -12,7 +12,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class SplashFragment :
     BaseFragment<SplashFragmentBinding, SplashViewModel>(SplashFragmentBinding::inflate) {
 
-    override var module = splashModule
+    override val module = splashModule
     override val vm by viewModel<SplashViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -20,7 +20,7 @@ class SplashFragment :
         vm.checkNetwork()
         vm.isNetworkAvailable.observe { available ->
             if (available)
-                true
+                navigateTo(R.id.action_splashFragment_to_signInFragment)
             else
                 showNetworkNotAvailableDialog()
         }
