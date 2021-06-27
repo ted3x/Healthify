@@ -1,4 +1,4 @@
-package ge.c0d3in3.healthify.base
+package ge.c0d3in3.healthify.app
 
 import android.app.Application
 import org.koin.android.ext.koin.androidContext

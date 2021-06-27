@@ -8,11 +8,18 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="ge.c0d3in3.healthify.presentation.splash.ui.SplashFragment"
-        android:label="SplashFragment" >
+        android:label="SplashFragment"
+        tools:layout="@layout/splash_fragment">
         <action
             android:id="@+id/action_splashFragment_to_signInFragment"
             app:destination="@id/signInFragment"
             app:popUpTo="@id/signInFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -25,21 +32,37 @@
         <action
             android:id="@+id/action_signInFragment_to_onboardingFragment"
             app:destination="@id/onboardingFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="ge.c0d3in3.healthify.presentation.auth.sign_up.ui.SignUpFragment"
-        android:label="SignUpFragment" >
+        android:label="SignUpFragment"
+        tools:layout="@layout/sign_up_fragment">
         <action
             android:id="@+id/action_signUpFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
         <action
             android:id="@+id/action_signUpFragment_to_onboardingFragment"
             app:destination="@id/onboardingFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/onboardingFragment"
         android:name="ge.c0d3in3.healthify.presentation.onboarding.ui.OnboardingFragment"
         android:label="onboarding_fragment"
-        tools:layout="@layout/onboarding_fragment" />
+        tools:layout="@layout/onboarding_fragment" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="ge.c0d3in3.healthify.presentation.dashboard.DashboardFragment"
+        android:label="dashboard_fragment"
+        tools:layout="@layout/dashboard_fragment" />
 </navigation>

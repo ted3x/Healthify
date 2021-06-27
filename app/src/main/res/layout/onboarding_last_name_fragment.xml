@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.onboarding.screens.first_name.OnboardingFirstNameFragment">
+
+    <ge.c0d3in3.components.edit_text.EditTextWithTitle
+        android:id="@+id/onboardingLastNameEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        app:etHint="@string/onboarding_last_name_hint" />
+
+</FrameLayout>

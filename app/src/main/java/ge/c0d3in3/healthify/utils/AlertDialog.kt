@@ -35,6 +35,10 @@ class AlertDialog(context: Context) : Dialog(context) {
         binding.alertNegativeText.text = context.getString(textRes)
     }
 
+    fun setNegativeButtonText(text: String) {
+        binding.alertNegativeText.text = text
+    }
+
     fun setPositiveButtonText(textRes: Int) {
         binding.alertPositiveText.text = context.getString(textRes)
     }

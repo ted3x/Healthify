@@ -13,4 +13,12 @@
             <enum name="phone" value="5"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="RecyclerSpinner">
+        <attr name="rsGravity" format="enum">
+            <enum name="start" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="end" value="2"/>
+        </attr>
+    </declare-styleable>
 </resources>

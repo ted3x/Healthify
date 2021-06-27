@@ -7,6 +7,8 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import ge.c0d3in3.components.R
 import ge.c0d3in3.components.databinding.EditTextWithTitleLayoutBinding
 
@@ -62,6 +64,12 @@ class EditTextWithTitle @JvmOverloads constructor(
             title = typedArray.getString(R.styleable.EditTextWithTitle_etTitle) ?: ""
             inputType = typedArray.getInt(R.styleable.EditTextWithTitle_etInputType, 0)
             typedArray.recycle()
+        }
+    }
+
+    fun onChange(callback: (String) -> Unit) {
+        binding.editText.doAfterTextChanged {
+            callback.invoke(it.toString())
         }
     }
 

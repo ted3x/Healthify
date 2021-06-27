@@ -6,5 +6,5 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val splashModule = module {
-    viewModel { SplashViewModel(app = androidApplication()) }
+    viewModel { SplashViewModel(app = androidApplication(), userRepository = get()) }
 }

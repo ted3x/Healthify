@@ -75,9 +75,12 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
         super.onDestroyView()
         _binding = null
         dialog = null
-        unloadKoinModules(module)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        unloadKoinModules(module)
+    }
     fun <T> LiveData<T>.observe(callback: (T) -> Unit) {
         this.observe(viewLifecycleOwner, Observer {
             callback.invoke(it)
@@ -92,4 +95,3 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
 
     protected fun navigateTo(actionId: Int) = this.findNavController().navigate(actionId)
 }
-

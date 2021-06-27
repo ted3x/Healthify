@@ -1,14 +1,13 @@
 package ge.c0d3in3.healthify
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import androidx.core.view.marginStart
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
+import androidx.appcompat.app.AppCompatActivity
 import ge.c0d3in3.healthify.databinding.ActivityMainBinding
+import ge.c0d3in3.healthify.services.SensorListener
 import ge.c0d3in3.healthify.utils.gone
 import ge.c0d3in3.healthify.utils.show
+
 
 class MainActivity : AppCompatActivity() {
 

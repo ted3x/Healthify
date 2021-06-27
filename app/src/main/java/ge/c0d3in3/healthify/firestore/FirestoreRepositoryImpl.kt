@@ -4,26 +4,29 @@ import com.google.firebase.firestore.FirebaseFirestore
 import ge.c0d3in3.healthify.extensions.execute
 import ge.c0d3in3.healthify.model.Response
 
-class FirestoreRepositoryImpl(val firestore: FirebaseFirestore) {
+class FirestoreRepositoryImpl(val firestore: FirebaseFirestore): FirestoreRepository {
 
-    suspend inline fun <reified T> getDocument(collection: String, documentId: String): Response<T>{
+    override suspend fun <T> getDocument(collection: String, documentId: String, clazz: Class<T>): Response<T>{
         val result = firestore.collection(collection).document(documentId).get().execute()
         return when(result){
             is Response.Success -> {
-                if(result.data.data == null)
+                if (result.data.data == null)
                     Response.Fail("Document not found!")
-                else
-                    Response.Success(result.data.toObject(T::class.java)!!)
+                else {
+                    if(result.data.toObject(clazz) == null)
+                        Response.Fail("Document not found!")
+                    else Response.Success(result.data.toObject(clazz)!!)
+                }
             }
             is Response.Fail -> Response.Fail(result.message)
         }
     }
 
-    suspend fun <T: Any> addDocument(collection: String, document: T) {
+    override suspend fun <T: Any> addDocument(collection: String, document: T) {
         firestore.collection(collection).add(document).execute()
     }
 
-    suspend fun <T: Any> setDocument(collection: String, documentId: String, document: T) {
+    override suspend fun <T: Any> setDocument(collection: String, documentId: String, document: T) {
         firestore.collection(collection).document(documentId).set(document).execute()
     }
 }

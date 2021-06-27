@@ -12,7 +12,7 @@ suspend fun <T : Any> Task<T>.execute(): Response<T> {
     }
 }
 
-suspend fun <T: Any> Response<T>.go(onSuccess: suspend (T) -> Unit, onFail: suspend (String) -> Unit) {
+suspend fun <T: Any> Response<T>.execute(onSuccess: suspend (T) -> Unit, onFail: suspend (String) -> Unit) {
     when(this) {
         is Response.Success -> onSuccess.invoke(data)
         is Response.Fail -> onFail.invoke(message)
