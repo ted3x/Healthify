@@ -11,7 +11,10 @@ Healthify is tracker-based activity, which helps you track your steps, walked si
 - Daily statistics
 
 ## Screenshots
-![](/screenshots/sign in.png =250px)
+
+
+    <img src="/screenshots/sign in.png" alt="alt text" width="whatever" height="whatever">
+
 ![](/screenshots/sign_up.png?raw=true)
 ![](screenshots/onboarding_firstname.png?raw=true)
 ![](screenshots/onboarding_lastname.png?raw=true)
