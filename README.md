@@ -25,13 +25,13 @@ Healthify is tracker-based activity, which helps you track your steps, walked si
 <img src="/screenshots/profile.png" alt="alt text" width="400px" height="600px">
 
 ## Used libraries
-**Firebase-Auth** - for authentication
-**Firebase-Firestore**  - for storing user data
-**Koin** - for dependecy injection
-**Coroutines** - for asynchronous calls
-**Navigation component** - for navigation
-**Room** - for storing user data locally
-**Dots indicator** 
-**Gson**
-**Glide** 
-**Progress Bar**
+**Firebase-Auth** - for authentication  
+**Firebase-Firestore**  - for storing user data  
+**Koin** - for dependecy injection  
+**Coroutines** - for asynchronous calls  
+**Navigation component** - for navigation  
+**Room** - for storing user data locally  
+**Dots indicator**   
+**Gson**  
+**Glide**   
+**Progress Bar**  
