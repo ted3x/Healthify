@@ -73,7 +73,7 @@ class DashboardViewModel(
                 stepCounterRepository.updateSteps(stepData.value!!)
                 user.value?.weight = user.value!!.weight + stepData.value!!.weightGain
                 stepData.value = getDefaultStepData()
-                lastStep = steps
+                savedSteps = 0
                 todaySteps.value = 0
             } else {
                 stepData.value?.steps = steps
