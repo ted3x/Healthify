@@ -11,16 +11,17 @@ Healthify is tracker-based activity, which helps you track your steps, walked si
 - Daily statistics
 
 ## Screenshots
-![](/screenshots/sign_in.png?raw=true)
-![](/relative/path/to/img.png?raw=true)
-![](/relative/path/to/img.png?raw=true)
-![](/relative/path/to/img.png?raw=true)
-![](/relative/path/to/img.png?raw=true)
-![](/relative/path/to/img.png?raw=true)
-![](/relative/path/to/img.png?raw=true)
-![](/relative/path/to/img.png?raw=true)
-![](/relative/path/to/img.png?raw=true)
-![](/relative/path/to/img.png?raw=true)
+![](/screenshots/sign in.png?raw=true)
+![](/screenshots/sign_up.png?raw=true)
+![](screenshots/onboarding_firstname.png?raw=true)
+![](screenshots/onboarding_lastname.png?raw=true)
+![](screenshots/onboarding_Age.png?raw=true)
+![](screenshots/onboarding_height.png?raw=true)
+![](screenshots/onboarding_weight.png?raw=true)
+![](screenshots/img.png?raw=true)
+![](screenshots/img.png?raw=true)
+![](screenshots/img.png?raw=true)
+
 
 ## Used libraries
 **Firebase-Auth** - for authentication
