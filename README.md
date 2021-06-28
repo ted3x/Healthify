@@ -13,16 +13,16 @@ Healthify is tracker-based activity, which helps you track your steps, walked si
 ## Screenshots
 
 
-<img src="/screenshots/sign in.png" alt="alt text" width="200px" height="600px">
-<img src="screenshots/sign_up.png" alt="alt text" width="200px" height="600px">
-<img src="screenshots/onboarding_firstname.png" alt="alt text" width="200px" height="600px">
-<img src="/screenshots/onboarding_lastname.png" alt="alt text" width="200px" height="600px">
-<img src="/screenshots/onboarding_Age" alt="alt text" width="200px" height="600px">
-<img src="/screenshots/onboarding_height" alt="alt text" width="200px" height="600px">
-<img src="/screenshots/onboarding_weight" alt="alt text" width="200px" height="600px">
-<img src="/screenshots/onboarding_target_weight" alt="alt text" width="200px" height="600px">
-<img src="/screenshots/dashboard.png" alt="alt text" width="200px" height="600px">
-<img src="/screenshots/profile.png" alt="alt text" width="200px" height="600px">
+<img src="/screenshots/sign in.png" alt="alt text" width="400px" height="600px">
+<img src="screenshots/sign_up.png" alt="alt text" width="400px" height="600px">
+<img src="screenshots/onboarding_firstname.png" alt="alt text" width="400px" height="600px">
+<img src="/screenshots/onboarding_lastname.png" alt="alt text" width="400px" height="600px">
+<img src="/screenshots/onboarding_Age" alt="alt text" width="400px" height="600px">
+<img src="/screenshots/onboarding_height" alt="alt text" width="400px" height="600px">
+<img src="/screenshots/onboarding_weight" alt="alt text" width="400px" height="600px">
+<img src="/screenshots/onboarding_target_weight" alt="alt text" width="400px" height="600px">
+<img src="/screenshots/dashboard.png" alt="alt text" width="400px" height="600px">
+<img src="/screenshots/profile.png" alt="alt text" width="400px" height="600px">
 
 ## Used libraries
 **Firebase-Auth** - for authentication
