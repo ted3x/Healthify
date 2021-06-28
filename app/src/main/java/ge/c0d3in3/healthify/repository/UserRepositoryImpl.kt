@@ -34,7 +34,7 @@ class UserRepositoryImpl(
             writeUserInFirebase(user)
     }
 
-    suspend fun saveUserRemotely(user: User) {
+    private suspend fun saveUserRemotely(user: User) {
         writeUserInFirebase(user)
     }
 
@@ -44,6 +44,16 @@ class UserRepositoryImpl(
 
     override suspend fun updateSteps(steps: List<StepData>) {
         userDao.updateSteps(steps, getUserUid())
+        saveUserRemotely(getUser())
+    }
+
+    override suspend fun updateWeight(weight: Double) {
+        userDao.updateWeight(weight, getUserUid())
+        saveUserRemotely(getUser())
+    }
+
+    override suspend fun updateUserPicture(url: String) {
+        userDao.updateProfilePicture(url, getUserUid())
         saveUserRemotely(getUser())
     }
 

@@ -4,10 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ge.c0d3in3.healthify.databinding.ActivityMainBinding
+import ge.c0d3in3.healthify.extensions.gone
+import ge.c0d3in3.healthify.extensions.show
 import ge.c0d3in3.healthify.services.SensorListener
-import ge.c0d3in3.healthify.utils.gone
-import ge.c0d3in3.healthify.utils.show
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.toolbarBackBtn.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     fun setToolbarTitle(titleRes: Int?) {

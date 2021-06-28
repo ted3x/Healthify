@@ -6,11 +6,11 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import androidx.core.content.ContextCompat
+import ge.c0d3in3.healthify.R
+import ge.c0d3in3.healthify.presentation.onboarding.screens.target_weight.WeightInfo
 import java.util.*
 
 fun Context.color(colorRes: Int) = ContextCompat.getColor(this, colorRes)
-
-fun Double.formatToWeight() = String.format("%.1f", this)
 
 fun SpannableString.span(
     color: Int,
@@ -58,3 +58,38 @@ fun View.hide() {
 fun View.gone() {
     this.visibility = View.GONE
 }
+
+fun calculateBMI(context: Context, weight: Double, height: Int): WeightInfo {
+    val heightInMetres = height.toDouble() / 100
+    val bmi = weight / (heightInMetres * heightInMetres)
+    return getBMIInfo(context, bmi)
+}
+
+private fun getBMIInfo(context: Context, bmi: Double): WeightInfo {
+    val bmiInfo = when {
+        bmi < 18.5 -> WeightInfo(
+            text = context.getString(R.string.components_weight_underweight),
+            textColorRes = R.color.primary
+        )
+        bmi in 18.5..25.9 -> WeightInfo(
+            text = context.getString(R.string.components_weight_normal),
+            textColorRes = R.color.green
+        )
+        bmi in 25.0..25.9 -> WeightInfo(
+            text = context.getString(R.string.components_weight_overweight),
+            textColorRes = R.color.yellow
+        )
+
+        bmi in 30.0..34.9 -> WeightInfo(
+            text = context.getString(R.string.components_weight_obese),
+            textColorRes = R.color.orange
+        )
+        else -> WeightInfo(
+            text = context.getString(R.string.components_weight_extremely_obese),
+            textColorRes = R.color.red
+        )
+    }
+    return bmiInfo.copy(bmi = bmi)
+}
+
+fun calculateBurnedCalories(stepsWalked: Int) = stepsWalked * 0.045

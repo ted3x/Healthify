@@ -5,6 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/spinner_arrow"
+        android:rotation="180"
+        app:layout_constraintBottom_toBottomOf="@id/weightMainSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/weightMainSpinner"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/spinner_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/weightMainSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/weightMainSpinner"/>
+
     <ge.c0d3in3.components.spinner.RecyclerSpinner
         android:id="@+id/weightMainSpinner"
         android:layout_width="wrap_content"

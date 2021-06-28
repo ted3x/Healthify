@@ -11,8 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import ge.c0d3in3.healthify.MainActivity
 import ge.c0d3in3.healthify.R
-import ge.c0d3in3.healthify.utils.AlertDialog
-import org.koin.android.ext.android.bind
+import ge.c0d3in3.components.AlertDialog
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import org.koin.core.module.Module

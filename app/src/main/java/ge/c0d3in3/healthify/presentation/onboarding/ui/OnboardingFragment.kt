@@ -7,6 +7,8 @@ import androidx.viewpager2.widget.ViewPager2
 import ge.c0d3in3.healthify.R
 import ge.c0d3in3.healthify.base.BaseFragment
 import ge.c0d3in3.healthify.databinding.OnboardingFragmentBinding
+import ge.c0d3in3.healthify.extensions.gone
+import ge.c0d3in3.healthify.extensions.show
 import ge.c0d3in3.healthify.presentation.onboarding.adapter.OnboardingAdapter
 import ge.c0d3in3.healthify.presentation.onboarding.di.onboardingModule
 import ge.c0d3in3.healthify.presentation.onboarding.screens.age.OnboardingAgeFragment
@@ -17,8 +19,6 @@ import ge.c0d3in3.healthify.presentation.onboarding.screens.profile_picture.Onbo
 import ge.c0d3in3.healthify.presentation.onboarding.screens.target_weight.OnboardingTargetWeightFragment
 import ge.c0d3in3.healthify.presentation.onboarding.screens.weight.OnboardingWeightFragment
 import ge.c0d3in3.healthify.presentation.onboarding.vm.OnboardingViewModel
-import ge.c0d3in3.healthify.utils.gone
-import ge.c0d3in3.healthify.utils.show
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class OnboardingFragment : BaseFragment<OnboardingFragmentBinding, OnboardingViewModel>(

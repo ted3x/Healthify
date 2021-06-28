@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <com.app.progresviews.ProgressWheel
+        android:id="@+id/kilometersProgressLine"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:definitionText="kilometers"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:percentage="1000"
+        app:progressColor="#43bd9f"
+        app:valueDefTextSize="20sp" />
+
+    <ImageView
+        android:id="@+id/footstepsIv"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_footsteps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/stepProgressLine" />
+
+    <com.app.progresviews.ProgressLine
+        android:id="@+id/stepProgressLine"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        app:definition="daily steps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/footstepsIv"
+        app:layout_constraintTop_toBottomOf="@id/kilometersProgressLine"
+        app:lineBarWidth="7dp"
+        app:lineProgressColor="#43bd9f"
+        app:underLineColor="@android:color/darker_gray"
+        app:value="0"
+        app:valueDefTextSize="20sp"
+        app:valuePercentage="0" />
+
+    <TextView
+        android:id="@+id/stepTargetTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/stepProgressLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/stepProgressLine"
+        tools:text="100000" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,16 @@
-package ge.c0d3in3.healthify.utils
+package ge.c0d3in3.components
 
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import ge.c0d3in3.healthify.databinding.AlertDialogViewBinding
+import android.view.View
+import ge.c0d3in3.components.databinding.AlertDialogViewBinding
 
 class AlertDialog(context: Context) : Dialog(context) {
 
+    private var editTextCallback: ((String) -> Unit)? = null
     private val binding = AlertDialogViewBinding.inflate(LayoutInflater.from(context))
-    private var _context: Context? = context
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -43,22 +44,34 @@ class AlertDialog(context: Context) : Dialog(context) {
         binding.alertPositiveText.text = context.getString(textRes)
     }
 
+    fun setPositiveButtonText(text: String) {
+        binding.alertPositiveText.text = text
+    }
+
     fun setOnPositiveClickListener(callback: () -> Unit) {
         with(binding.alertPositiveButton) {
-            show()
-            setOnClickListener { callback.invoke() }
+            visibility = View.VISIBLE
+            setOnClickListener {
+                editTextCallback?.invoke(binding.dialogEt.text)
+                callback.invoke()
+            }
         }
     }
 
     fun setOnNegativeClickListener(callback: () -> Unit) {
         with(binding.alertNegativeButton) {
-            show()
+            visibility = View.VISIBLE
             setOnClickListener { callback.invoke() }
         }
     }
 
-    override fun dismiss() {
-        super.dismiss()
-        _context = null
+    fun setEditText(hint: String, title: String, inputType: Int, callback: (String) -> Unit) {
+        with(binding.dialogEt) {
+            this.visibility = View.VISIBLE
+            this.hint = hint
+            this.title = title
+            this.inputType = inputType
+        }
+        this.editTextCallback = callback
     }
 }

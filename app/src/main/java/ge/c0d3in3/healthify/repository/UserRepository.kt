@@ -8,9 +8,11 @@ interface UserRepository {
     fun isUserLoggedIn(): Boolean
     fun getUserUid(): String
     suspend fun updateSteps(steps: List<StepData>)
+    suspend fun updateWeight(weight: Double)
     suspend fun getUser(): User
     suspend fun getUserData(userId: String): Response<User>
     suspend fun createUser(user: User)
     suspend fun saveUser(user: User, saveRemotely: Boolean = false)
     suspend fun writeUserInFirebase(user: User)
+    suspend fun updateUserPicture(url: String)
 }

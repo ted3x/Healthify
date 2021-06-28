@@ -4,14 +4,15 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ge.c0d3in3.components.SingleLiveData
 
 abstract class BaseViewModel(val app: Application) : AndroidViewModel(app) {
 
     val alertMessage: LiveData<Pair<String, String>> get() = _alertMessage
-    protected val _alertMessage = MutableLiveData<Pair<String, String>>()
+    protected val _alertMessage = SingleLiveData<Pair<String, String>>()
 
     val navigationAction: LiveData<Int> get() = _navigationAction
-    private val _navigationAction = MutableLiveData<Int>()
+    private val _navigationAction = SingleLiveData<Int>()
 
     protected fun navigateTo(action: Int) {
         _navigationAction.postValue(action)

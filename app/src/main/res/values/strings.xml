@@ -42,11 +42,24 @@
     <string name="component_no">No</string>
     <string name="component_close">Close</string>
     <string name="components_error">Error</string>
+    <string name="components_success">Success</string>
     <string name="components_fill_all_the_fields">To continue, please fill all the fields!</string>
     <string name="components_weight_underweight">Underweight</string>
     <string name="components_weight_normal">Normal weight</string>
     <string name="components_weight_overweight">Overweight</string>
     <string name="components_weight_obese">Obese</string>
     <string name="components_weight_extremely_obese">Extremely Obese</string>
+    <string name="profile_profile">Profile</string>
+    <string name="profile_change_password">Change password</string>
+    <string name="profile_statistics">Statistics</string>
+    <string name="password_reset">Password reset</string>
     <string name="kg">kg</string>
+    <string name="update_profile_picture">Update profile picture</string>
+    <string name="log_out">Log out</string>
+    <string name="change_password">Change password</string>
+    <string name="old_password">Old password</string>
+    <string name="confirm_old_password">Confirm old password</string>
+    <string name="new_password">New password</string>
+    <string name="enter_email">Enter email</string>
+    <string name="statistics">Statistics</string>
 </resources>

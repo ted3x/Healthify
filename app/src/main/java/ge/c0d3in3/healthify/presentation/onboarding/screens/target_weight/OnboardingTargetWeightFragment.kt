@@ -6,10 +6,11 @@ import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import ge.c0d3in3.components.formatToWeight
 import ge.c0d3in3.healthify.R
 import ge.c0d3in3.healthify.databinding.OnboardingTargetWeightFragmentBinding
+import ge.c0d3in3.healthify.extensions.calculateBMI
 import ge.c0d3in3.healthify.extensions.color
-import ge.c0d3in3.healthify.extensions.formatToWeight
 import ge.c0d3in3.healthify.extensions.span
 import ge.c0d3in3.healthify.presentation.onboarding.screens.BaseOnboardingFragment
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -48,7 +49,7 @@ class OnboardingTargetWeightFragment :
     }
 
     private fun updateBMI(userWeight: Double, userHeight: Int) {
-        val userBMI = targetVm.calculateBMI(userWeight, userHeight)
+        val userBMI = calculateBMI(requireContext(),userWeight, userHeight)
         val description = requireContext().getString(
             R.string.onboarding_target_weight_description,
             userBMI.bmi?.formatToWeight(),
@@ -63,7 +64,7 @@ class OnboardingTargetWeightFragment :
         )
         spannable.span(
             requireContext().color(userBMI.textColorRes),
-            BMI_START + bmiLength + AFTER_BMI,
+            spannable.length - userBMI.text.length,
             spannable.length
         )
         setOnboardingDescription(spannable)

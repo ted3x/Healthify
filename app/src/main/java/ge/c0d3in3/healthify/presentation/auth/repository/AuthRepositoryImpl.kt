@@ -17,6 +17,18 @@ class AuthRepositoryImpl(
         return firebaseAuth.createUserWithEmailAndPassword(email, password).execute()
     }
 
+    override suspend fun changePassword(password: String): Response<Void> {
+        return firebaseAuth.currentUser!!.updatePassword(password).execute()
+    }
+
+    override suspend fun resetPassword(email: String): Response<Void> {
+        return firebaseAuth.sendPasswordResetEmail(email).execute()
+    }
+
+    override suspend fun logOut() {
+        firebaseAuth.signOut()
+    }
+
     companion object {
         const val USERS = "users"
     }

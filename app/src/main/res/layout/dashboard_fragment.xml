@@ -1,16 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:scrollbars="none"
     android:layout_height="match_parent"
+    android:paddingHorizontal="20dp"
+    android:layout_marginVertical="20dp"
+    android:fillViewport="true"
     tools:context=".presentation.dashboard.DashboardFragment">
 
-    <TextView
-        android:id="@+id/steps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="22sp"
-        android:textColor="@color/black"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/profileTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/profile_profile"
+            android:textColor="@color/primary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/userCv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="25dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileTv">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/grey">
+
+                <ImageView
+                    android:id="@+id/userIv"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="20dp"
+                    app:layout_constraintBottom_toBottomOf="@id/userBMITv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/userNameTv"
+                    tools:src="@color/black" />
+
+                <TextView
+                    android:id="@+id/userNameTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/userIv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Tedo Manvelidze" />
+
+                <TextView
+                    android:id="@+id/userAgeTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/userIv"
+                    app:layout_constraintStart_toStartOf="@id/userNameTv"
+                    app:layout_constraintTop_toBottomOf="@id/userNameTv"
+                    tools:text="Age: 33" />
+
+                <TextView
+                    android:id="@+id/userHeightTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/userIv"
+                    app:layout_constraintStart_toStartOf="@id/userNameTv"
+                    app:layout_constraintTop_toBottomOf="@id/userAgeTv"
+                    tools:text="Height: 233 cm" />
+
+                <TextView
+                    android:id="@+id/userWeightTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/userIv"
+                    app:layout_constraintStart_toStartOf="@id/userNameTv"
+                    app:layout_constraintTop_toBottomOf="@id/userHeightTv"
+                    tools:text="Weight: 30.3 Kg" />
+
+                <TextView
+                    android:id="@+id/userBMITv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toEndOf="@id/userIv"
+                    app:layout_constraintStart_toStartOf="@id/userNameTv"
+                    app:layout_constraintTop_toBottomOf="@id/userWeightTv"
+                    tools:text="BMI: 24.4 [Normal]" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ge.c0d3in3.components.step_tracker.StepTrackerView
+            android:id="@+id/stepTrackerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/userCv"
+            android:layout_marginTop="20dp"/>
+
+        <ge.c0d3in3.components.weight_tracker.WeightTrackerView
+            android:id="@+id/weighTrackerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/stepTrackerView"
+            android:layout_marginTop="20dp"/>
+
+        <ge.c0d3in3.components.water_tracker.WaterTrackerView
+            android:id="@+id/waterTrackerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/weighTrackerView"
+            android:layout_marginTop="20dp"/>
+
+        <ge.c0d3in3.components.sleep_tracker.SleepTrackerView
+            android:id="@+id/sleepTrackerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/waterTrackerView"
+            android:layout_marginTop="20dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

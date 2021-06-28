@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginHorizontal="45dp"
     android:background="@color/black"
     app:cardCornerRadius="10dp"
     app:cardElevation="0dp">
@@ -44,11 +43,22 @@
             android:textAlignment="center"
             android:textColor="@color/grey"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@id/verticalDivider"
+            app:layout_constraintBottom_toTopOf="@id/dialogEt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/alertTitleMessage"
-            tools:text="sadaskdaksdkasd" />
+            tools:text="sadaskdaksdkasd"/>
+
+        <ge.c0d3in3.components.edit_text.EditTextWithTitle
+            android:id="@+id/dialogEt"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/alertMessage"
+            app:layout_constraintBottom_toTopOf="@id/verticalDivider"/>
 
         <View
             android:id="@+id/horizontalDivider"
@@ -56,7 +66,7 @@
             android:layout_height="0.5dp"
             android:background="#D9D9D9"
             app:layout_constraintBottom_toBottomOf="@id/alertPositiveButton"
-            app:layout_constraintTop_toBottomOf="@id/alertMessage"
+            app:layout_constraintTop_toBottomOf="@id/dialogEt"
             app:layout_constraintTop_toTopOf="@id/alertPositiveButton" />
 
         <View

@@ -15,4 +15,10 @@ interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveUser(user: User)
+
+    @Query("UPDATE `user` SET `weight` = :weight WHERE uid LIKE :userId")
+    suspend fun updateWeight(weight: Double, userId: String)
+
+    @Query("UPDATE `user` SET `profilePicture` = :pictureUrl WHERE uid LIKE :userId")
+    suspend fun updateProfilePicture(pictureUrl: String, userId: String)
 }

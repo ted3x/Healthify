@@ -17,6 +17,7 @@ import ge.c0d3in3.healthify.extensions.getToday
 import ge.c0d3in3.healthify.extensions.getTomorrow
 import ge.c0d3in3.healthify.model.StepData
 import ge.c0d3in3.healthify.repository.StepCounterRepository
+import ge.c0d3in3.healthify.repository.UserRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -38,6 +39,7 @@ class SensorListener : Service(), SensorEventListener {
 
     private lateinit var preferences: SharedPreferences
     private val stepCounterRepository by inject<StepCounterRepository>()
+    private val userRepository by inject<UserRepository>()
 
     private val job = SupervisorJob()
     private val scope = CoroutineScope(Dispatchers.Main + job)
@@ -61,11 +63,13 @@ class SensorListener : Service(), SensorEventListener {
             steps > 0 && System.currentTimeMillis() > lastSaveTime + SAVE_OFFSET_TIME
         ) {
             scope.launch(Dispatchers.Default) {
+                if(!userRepository.isUserLoggedIn()) return@launch
                 val stepsData = stepCounterRepository.getAllSteps().toMutableList()
                 if (stepsData.isEmpty() || stepsData.last().timestamp != getToday()) stepsData.add(
-                    StepData(getToday(), 0)
+                    StepData(getToday(), 0, targetStep = stepCounterRepository.getCurrentTargetStep()!!)
                 )
-                stepsData.last().steps = steps - lastSaveSteps
+                if(stepsData.last().steps >= stepsData.last().targetStep) return@launch
+                stepsData.last().steps += steps - lastSaveSteps
                 stepCounterRepository.saveSteps(stepsData)
                 lastSaveSteps = steps
                 lastSaveTime = System.currentTimeMillis()
@@ -80,6 +84,7 @@ class SensorListener : Service(), SensorEventListener {
 
         preferences = applicationContext.getSharedPreferences("app", Context.MODE_PRIVATE)
         lastSaveSteps = preferences.getInt("steps", -1)
+        lastSaveTime = preferences.getLong("lastSaveTime", 0)
         // restart service every hour to save the current step count
         val nextUpdate =
             getTomorrow().coerceAtMost(System.currentTimeMillis() + AlarmManager.INTERVAL_HOUR)
@@ -149,6 +154,7 @@ class SensorListener : Service(), SensorEventListener {
             val sm = getSystemService(Context.SENSOR_SERVICE) as SensorManager
             sm.unregisterListener(this)
             preferences.edit().putInt("steps", lastSaveSteps).apply()
+            preferences.edit().putLong("lastSaveTime", lastSaveTime).apply()
         } catch (e: Exception) {
             e.printStackTrace()
         }

@@ -23,10 +23,6 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding, SignUpViewModel>(Sign
 
     private fun setClickListeners() {
         binding.signInBtn.setOnClickListener {
-            navigateTo(R.id.action_signUpFragment_to_signInFragment)
-        }
-
-        binding.signInBtn.setOnClickListener {
             val email = binding.mailEt.text
             val password = binding.passwordEt.text
             val confirmPassword = binding.confirmPasswordEt.text

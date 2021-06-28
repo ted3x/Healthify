@@ -3,9 +3,9 @@ package ge.c0d3in3.healthify.presentation.onboarding.screens.target_weight
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ge.c0d3in3.components.formatToWeight
 import ge.c0d3in3.healthify.R
 import ge.c0d3in3.healthify.base.BaseViewModel
-import ge.c0d3in3.healthify.extensions.formatToWeight
 
 class OnboardingTargetWeightViewModel(app: Application) : BaseViewModel(app) {
     val mainWeight = IntRange(30, 180).toList()
@@ -37,39 +37,6 @@ class OnboardingTargetWeightViewModel(app: Application) : BaseViewModel(app) {
         updateWeightInfo()
     }
 
-    fun calculateBMI(weight: Double, height: Int): WeightInfo {
-        val heightInMetres = height.toDouble() / 100
-        val bmi = weight / (heightInMetres * heightInMetres)
-        return getBMIInfo(bmi)
-    }
-
-    private fun getBMIInfo(bmi: Double): WeightInfo {
-        val bmiInfo = when {
-            bmi < 18.5 -> WeightInfo(
-                text = app.getString(R.string.components_weight_underweight),
-                textColorRes = R.color.primary
-            )
-            bmi in 18.5..25.9 -> WeightInfo(
-                text = app.getString(R.string.components_weight_normal),
-                textColorRes = R.color.green
-            )
-            bmi in 25.0..25.9 -> WeightInfo(
-                text = app.getString(R.string.components_weight_overweight),
-                textColorRes = R.color.yellow
-            )
-
-            bmi in 30.0..34.9 -> WeightInfo(
-                text = app.getString(R.string.components_weight_obese),
-                textColorRes = R.color.orange
-            )
-            else -> WeightInfo(
-                text = app.getString(R.string.components_weight_extremely_obese),
-                textColorRes = R.color.red
-            )
-        }
-        return bmiInfo.copy(bmi = bmi)
-    }
-
     fun setUserWeight(userWeight: Double) {
         this.userWeight = userWeight
     }
@@ -87,7 +54,7 @@ class OnboardingTargetWeightViewModel(app: Application) : BaseViewModel(app) {
             )
             else -> WeightInfo(
                 text = "Lose ${(userWeight - mSelectedWeight).formatToWeight()} Kg", textColorRes =
-                R.color.green
+                R.color.red
             )
         }
     }

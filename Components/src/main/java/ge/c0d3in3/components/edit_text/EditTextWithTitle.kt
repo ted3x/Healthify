@@ -41,17 +41,20 @@ class EditTextWithTitle @JvmOverloads constructor(
             binding.editText.hint = value
         }
 
-    private var inputType = 0
+    var inputType = 0
         set(value) {
             field = value
             with(binding.editText) {
                 when (value) {
                     TYPE_CLASS_TEXT -> inputType = InputType.TYPE_CLASS_TEXT
                     TYPE_CLASS_NUMBER -> inputType = InputType.TYPE_CLASS_NUMBER
+                    TYPE_NUMBER_FLAG_DECIMAL -> inputType =
+                        InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
                     TYPE_TEXT_VARIATION_EMAIL_ADDRESS -> inputType =
-                        InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-                    TYPE_TEXT_VARIATION_PASSWORD -> inputType =
-                        InputType.TYPE_TEXT_VARIATION_PASSWORD
+                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+                    TYPE_TEXT_VARIATION_PASSWORD
+                    -> inputType =
+                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                 }
             }
         }
@@ -74,11 +77,11 @@ class EditTextWithTitle @JvmOverloads constructor(
     }
 
     companion object {
-        private const val TYPE_CLASS_TEXT = 0
-        private const val TYPE_CLASS_NUMBER = 1
-        private const val TYPE_NUMBER_FLAG_DECIMAL = 2
-        private const val TYPE_TEXT_VARIATION_PASSWORD = 3
-        private const val TYPE_TEXT_VARIATION_EMAIL_ADDRESS = 4
-        private const val TYPE_CLASS_PHONE = 5
+        const val TYPE_CLASS_TEXT = 0
+        const val TYPE_CLASS_NUMBER = 1
+        const val TYPE_NUMBER_FLAG_DECIMAL = 2
+        const val TYPE_TEXT_VARIATION_PASSWORD = 3
+        const val TYPE_TEXT_VARIATION_EMAIL_ADDRESS = 4
+        const val TYPE_CLASS_PHONE = 5
     }
 }

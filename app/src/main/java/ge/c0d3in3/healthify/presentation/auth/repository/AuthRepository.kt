@@ -6,4 +6,7 @@ import ge.c0d3in3.healthify.model.Response
 interface AuthRepository {
     suspend fun signIn(email: String, password: String): Response<AuthResult>
     suspend fun signUp(email: String, password: String): Response<AuthResult>
+    suspend fun changePassword(password: String): Response<Void>
+    suspend fun resetPassword(email: String): Response<Void>
+    suspend fun logOut()
 }

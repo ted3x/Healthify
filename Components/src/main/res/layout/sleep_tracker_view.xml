@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/sleepIv"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_sleep"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/sleepProgressLine"
+        />
+    <com.app.progresviews.ProgressLine
+        android:id="@+id/sleepProgressLine"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        app:definition="hours of sleep"
+        app:layout_constraintStart_toEndOf="@id/sleepIv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lineBarWidth="7dp"
+        app:lineProgressColor="#2196F3"
+        app:underLineColor="@android:color/darker_gray"
+        app:value="2"
+        app:valueDefTextSize="20sp"
+        app:valuePercentage="55" />
+
+    <TextView
+        android:id="@+id/sleepTargetTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="8"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#000000"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/sleepProgressLine"
+        app:layout_constraintBottom_toBottomOf="@id/sleepProgressLine"/>
+
+    <Button
+        android:id="@+id/addSleep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/add_hours"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sleepProgressLine" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

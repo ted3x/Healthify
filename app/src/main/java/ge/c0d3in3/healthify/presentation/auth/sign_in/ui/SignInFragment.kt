@@ -11,7 +11,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class SignInFragment: BaseFragment<SignInFragmentBinding, SignInViewModel>(SignInFragmentBinding::inflate) {
 
-    override val showBackButton = true
+    override val showBackButton = false
     override val toolbarTitleRes = R.string.sign_in
     override val module = signInModule
     override val vm by viewModel<SignInViewModel>()
@@ -24,6 +24,10 @@ class SignInFragment: BaseFragment<SignInFragmentBinding, SignInViewModel>(SignI
     private fun setClickListeners() {
         binding.signUpTv.setOnClickListener {
             navigateTo(R.id.action_signInFragment_to_signUpFragment)
+        }
+
+        binding.recoverPasswordTv.setOnClickListener {
+            navigateTo(R.id.action_signInFragment_to_passwordResetFragment)
         }
 
         binding.signInBtn.setOnClickListener {
