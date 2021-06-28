@@ -25,7 +25,9 @@ class StatisticsViewModel(app: Application, private val userRepository: UserRepo
 
     init {
         viewModelScope.launch {
-            val stepData = userRepository.getUser().steps.last()
+            val user = userRepository.getUser()
+            if (user.steps.isEmpty()) return@launch
+            val stepData = user.steps.last()
             _steps.postValue(parseItems(stepData))
             _date.postValue(getDate(stepData.timestamp))
         }
