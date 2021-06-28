@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ge.c0d3in3.healthify.base.BaseViewModel
+import ge.c0d3in3.healthify.extensions.getToday
+import ge.c0d3in3.healthify.model.StepData
 import ge.c0d3in3.healthify.repository.UserRepository
 import ge.c0d3in3.healthify.model.User
 import kotlinx.coroutines.Dispatchers
@@ -57,8 +59,18 @@ class OnboardingViewModel(app: Application, private val userRepository: UserRepo
         user.profilePicture = profilePictureUrl
         user.uid = userRepository.getUserUid()
         viewModelScope.launch(Dispatchers.Default) {
+            user.steps.add(getDefaultStepData())
             userRepository.saveUser(user, true)
             _navigateToDashboard.postValue(true)
         }
+    }
+
+    fun getDefaultStepData(): StepData {
+        return StepData(
+            getToday(),
+            targetWater = user.targetWater,
+            targetStep = user.targetStep,
+            targetSleep = user.targetSleep
+        )
     }
 }

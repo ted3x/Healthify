@@ -15,10 +15,10 @@ class StepCounterRepository(private val userRepository: UserRepository){
         return userRepository.getUser().steps
     }
 
-    suspend fun addNewStep(stepData: StepData) {
+    private suspend fun addNewStep(stepData: StepData) {
         val user = userRepository.getUser()
-        user.steps.add(stepData)
-        userRepository.saveUser(user)
+        user.steps.toMutableList().add(stepData)
+        userRepository.saveUser(user, true)
     }
 
     suspend fun getSteps(dateStart: Long, dateEnd: Long? = null): List<StepData> {
@@ -38,10 +38,14 @@ class StepCounterRepository(private val userRepository: UserRepository){
     suspend fun updateSteps(stepData: StepData) {
         val user = userRepository.getUser()
         val steps = user.steps.toMutableList()
+        var found = false
         steps.forEachIndexed { idx, it ->
-            if(it.timestamp == stepData.timestamp)
+            if(it.timestamp == stepData.timestamp) {
                 steps[idx] = stepData
+                found = true
+            }
         }
-        userRepository.updateSteps(steps)
+        if(found) userRepository.updateSteps(steps)
+        else addNewStep(stepData)
     }
 }
